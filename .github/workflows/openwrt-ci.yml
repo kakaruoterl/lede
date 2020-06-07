@@ -9,15 +9,21 @@
 
 name: kaka-lede
 
-#on:
-#  push:
-#    branches: 
-#      - master
+on:
+  release:
+    types: [published]
+  push:
+    branches:
+      - dev-lean-lede
+    paths:
+      - '.config'
   # schedule:
   #   - cron: 0 20 * * *
   # release:
   #   types: [published]
-
+  watch:
+    types: [started]
+    
 jobs:
 
   build_openwrt:
@@ -152,6 +158,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server=y
           CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=y
           CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_trojan=y
           CONFIG_PACKAGE_luci-app-ttyd=y
           CONFIG_PACKAGE_luci-app-v2ray-server=y
           CONFIG_PACKAGE_luci-app-verysync=y
@@ -159,6 +166,8 @@ jobs:
           CONFIG_PACKAGE_luci-app-wireguard=y
           CONFIG_PACKAGE_luci-app-wrtbwmon=y
           CONFIG_PACKAGE_luci-app-syncdial=y
+          CONFIG_PACKAGE_luci-app-passwall=y
+          CONFIG_PACKAGE_trojan=y
           EOF
 
           # LuCI主题:
