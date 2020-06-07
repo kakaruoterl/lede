@@ -10,14 +10,20 @@
 name: kaka-lede
 
 on:
+  release:
+    types: [published]
   push:
-    branches: 
-      - master
+    branches:
+      - dev-lean-lede
+    paths:
+      - '.config'
   # schedule:
   #   - cron: 0 20 * * *
   # release:
   #   types: [published]
-
+  watch:
+    types: [started]
+    
 jobs:
 
   build_openwrt:
