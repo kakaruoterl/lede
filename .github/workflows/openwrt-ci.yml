@@ -62,7 +62,7 @@ jobs:
           df -h
           
       - name: Add Passwall
-        run: cd openwrt && echo -e "\nsrc-git lienol https://github.com/Lienol/openwrt-package" >> feeds.conf.default
+        run: echo -e "\nsrc-git lienol https://github.com/Lienol/openwrt-package" >> feeds.conf.default
         
       
       - name: Update feeds
